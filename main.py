@@ -115,7 +115,6 @@ def player_turn():
 
 def play_game():
     # Initialize Game
-    welcome_message()
     reset_game_state()
 
     # Game Loop
@@ -133,4 +132,29 @@ def play_game():
     print_board()
     print(game_state["winner_message"])
 
-play_game()
+# play_game()
+
+def play_match():    
+    welcome_message()
+    # Initial Match
+    X_score = 0
+    O_score = 0
+    Tie_score = 0
+    game_count = 0
+    print("How many games is your match?")
+    match_length = int(input())
+    
+    # Game Loops
+    for i in range(match_length):
+        game_count+=1
+        print(f"GAME {game_count}")
+        play_game()
+        if game_state["winner"] == "X": X_score += 1
+        elif game_state["winner"] == "O": O_score += 1
+        else: Tie_score += 1
+
+    #Math Recap
+    print(f"{match_length}-game match is complete!")
+    print(f"Match Stats: X Wins: {X_score}, O Wins: {O_score}, Ties: {Tie_score}")
+
+play_match()
